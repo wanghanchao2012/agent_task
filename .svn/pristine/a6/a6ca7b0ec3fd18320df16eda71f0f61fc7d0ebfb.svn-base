@@ -1,0 +1,12 @@
+#\u6570\u636E\u6E901
+
+spring.datasource.dsp.jdbc-url=jdbc:mysql://221.122.127.181:3406/dspprd?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+spring.datasource.dsp.username=dsp
+spring.datasource.dsp.password=DSPprdDSP
+spring.datasource.dsp.driver-class-name=com.mysql.jdbc.Driver
+
+#\u6570\u636E\u6E902
+spring.datasource.auth.jdbc-url=jdbc:mysql://221.122.127.181:3406/emarbox3_prd?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+spring.datasource.auth.username=dsp
+spring.datasource.auth.password=DSPprdDSP
+spring.datasource.auth.driver-class-name=com.mysql.jdbc.Driver

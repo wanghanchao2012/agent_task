@@ -1,0 +1,29 @@
+package com.emarbox.agent.job;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
+import com.emarbox.agent.dbsync.service.TableFlowService;
+
+@Component
+public class TableFlowJob {
+	Logger log = LoggerFactory.getLogger(TableFlowJob.class);
+
+	@Autowired
+	TableFlowService tableFlowService;
+
+	@Scheduled(cron = "08 0/3 * * * ?")
+	public void job() {
+		log.info("job starting ...");
+		long startTime = System.currentTimeMillis();
+		tableFlowService.dataStreamStarting();
+		long endTime = System.currentTimeMillis();
+		float seconds = (endTime - startTime) / 1000F;
+		log.info(Float.toString(seconds) + " seconds.");
+		log.info("job end ... problem running time : {}", Float.toString(seconds) + " seconds.");
+
+	}
+}

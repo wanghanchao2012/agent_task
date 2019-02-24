@@ -1,0 +1,24 @@
+package com.emarbox.agent.dbsync.factory;
+
+import java.util.stream.Stream;
+
+import com.emarbox.agent.dbsync.entity.TableFlowEntity;
+
+import lombok.Data;
+
+@Data
+public class TableFlowConfig {
+	private String fromTable;
+	private String toTable;
+
+	public static Stream<TableFlowEntity> getDspToAuth() {
+		return Stream.<TableFlowEntity> builder()
+				.add(new TableFlowEntity("project_set", "project_set")).build();
+	}
+
+	public static Stream<TableFlowEntity> getAuthToDsp() {
+		return Stream.<TableFlowEntity> builder()
+				.add(new TableFlowEntity("tb_agent_user_project", "tb_agent_user_project")).build();
+	}
+
+}

@@ -1,0 +1,24 @@
+package com.emarbox.agent.dbsync.service;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.emarbox.agent.dbsync.enums.DataFlowEnum;
+import com.emarbox.agent.dbsync.factory.ProcessFactory;
+
+@Service
+public class TableFlowService {
+	Logger log = LoggerFactory.getLogger(ReplaceDataProcessService.class);
+
+	@Autowired
+	ProcessFactory processFactory;
+	
+	public void dataStreamStarting() {
+		for (DataFlowEnum record : DataFlowEnum.values()) {
+			processFactory.execute(record);
+		}
+	}
+
+}

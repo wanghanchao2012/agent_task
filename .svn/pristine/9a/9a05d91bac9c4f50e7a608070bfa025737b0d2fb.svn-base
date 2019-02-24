@@ -1,0 +1,20 @@
+package com.emarbox.agent.dbsync.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.emarbox.agent.dbsync.enums.DataFlowEnum;
+import com.emarbox.agent.dbsync.factory.ProcessFactory;
+
+@Service
+public class TableFlowService {
+	@Autowired
+	ProcessFactory processFactory;
+	
+	public void merge() {
+		for (DataFlowEnum record : DataFlowEnum.values()) {
+			processFactory.execute(record);
+		}
+	}
+
+}
